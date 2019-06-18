@@ -576,9 +576,9 @@ QImage QPdfDocument::render(int page, QSize imageSize, QPdfDocumentRenderOptions
     if (!pdfPage)
         return QImage();
 
-    QImage result(imageSize, QImage::Format_ARGB32);
-    result.fill(Qt::transparent);
-    FPDF_BITMAP bitmap = FPDFBitmap_CreateEx(result.width(), result.height(), FPDFBitmap_BGRA, result.bits(), result.bytesPerLine());
+    QImage result(imageSize, QImage::Format_RGB888);
+    result.fill(Qt::white);
+    FPDF_BITMAP bitmap = FPDFBitmap_CreateEx(result.width(), result.height(), FPDFBitmap_BGR, result.bits(), result.bytesPerLine());
 
     int rotation = 0;
     switch (renderOptions.rotation()) {
